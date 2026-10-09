@@ -2,7 +2,7 @@
 
 enemies={}
 
-function spawn_enemie(x,y,sprite)
+function spawn_enemy(x,y,direction,sprite)
 	add(enemies, {
 		x=x,
 		y=y,
@@ -17,12 +17,8 @@ function spawn_enemie(x,y,sprite)
 
 
 		update =function(self)
-			-- self.apply_enemie_movement_physics()
-			if abs(self.dy) < self.max_speed then
-				self.dy+=self.speed*self.direction
-			end
-			self.y+=self.dy
-			
+			self.apply_enemy_movement_physics(self)
+			self.move_enemy(self)
 		end,
 
 		draw = function(self)
@@ -30,14 +26,14 @@ function spawn_enemie(x,y,sprite)
 		end,
 
 
-		apply_enemie_movement_physics = function(self)
+		apply_enemy_movement_physics = function(self)
 			if abs(self.dy) < self.max_speed then
 				self.dy+=self.speed*self.direction
 			end
 			
 		end,
 
-		move_enemie = function(self)
+		move_enemy = function(self)
 			self.y+=self.dy
 		end
 	})
