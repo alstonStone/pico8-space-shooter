@@ -2,6 +2,15 @@
 
 rockets={}
 
+--[[
+player direction is -1
+player sprite is 2
+
+enemie direction is 1
+enemie sprite is 18
+
+]]--
+
 function spawn_rocket(x,y,direction,sprite)
 	add(rockets, {
 		x=x,
@@ -14,15 +23,9 @@ function spawn_rocket(x,y,direction,sprite)
 		sprite=sprite,
 
 
-
-
 		update =function(self)
-			-- self.apply_rocket_movement_physics()
-			if abs(self.dy) < self.max_speed then
-				self.dy+=self.speed*self.direction
-			end
-			self.y+=self.dy
-			
+			self.apply_rocket_movement_physics(self)
+			self.move_rocket(self)
 		end,
 
 		draw = function(self)
@@ -33,8 +36,7 @@ function spawn_rocket(x,y,direction,sprite)
 		apply_rocket_movement_physics = function(self)
 			if abs(self.dy) < self.max_speed then
 				self.dy+=self.speed*self.direction
-			end
-			
+			end		
 		end,
 
 		move_rocket = function(self)

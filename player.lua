@@ -43,7 +43,7 @@ function player_init()
 				player.dx=0
 			end
 			if (btnp(❎)) then
-				spawn_rocket(player.x+(player.width /2),player.y+(player.height/2),-1,2)
+				spawn_rocket(player.x+(player.width /2)+(2*player.dx),player.y,-1,2)
 				--spawn_rocket(63,63,-1,2)
 			end
 		end,
